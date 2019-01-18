@@ -1,28 +1,43 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Menu from './Menu.js';
+import Apod from './Apod.js';
+import About from './About.js';
+import Projects from './Projects.js';
+import Grid from '@material-ui/core/Grid';
+import { Switch, Route } from 'react-router-dom';
+import {styles} from './App.css.js';
+import { withStyles } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const { classes } = this.props;
+
+        return (
+            <Grid container className={classes.grid_flex_section}>
+                <Grid item className={classes.grid_static_col_scroll} >
+                    <Menu />
+                </Grid>
+                <Grid item className={classes.grid_flex_col_scroll} >
+                    <Switch>
+                        <Route exact path='/' component={Apod} />
+                        <Route exact path='/projects' component={Projects} />
+                        <Route exact path='/nasa' component={() => { window.location.href = 'https://api.nasa.gov/index.html'; return null; }} />
+                        <Route exact path='/about' component={About} />
+                    </Switch>
+                </Grid>
+            </Grid>
+        )
+    }
 }
 
-export default App;
+App.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(App);

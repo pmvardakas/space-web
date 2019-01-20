@@ -40,4 +40,8 @@ export const styles = theme => ({
     tableWrapper: {
         overflowX: 'auto',
     },
+    card_root: {
+        width: '100%',
+        margin: '10px 30px 10px 20px',
+    },
 });

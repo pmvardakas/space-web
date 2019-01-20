@@ -1,8 +1,8 @@
 import React from 'react';
-import Menu from './Menu.js';
-import Apod from './Apod.js';
-import About from './About.js';
-import Projects from './Projects.js';
+import Menu from './Containers/Menu/Menu.js';
+import Apod from './Containers/Apod/Apod.js';
+import About from './Containers/About/About.js';
+import Projects from './Containers/Projects/Projects.js';
 import Grid from '@material-ui/core/Grid';
 import { Switch, Route } from 'react-router-dom';
 import {styles} from './App.css.js';

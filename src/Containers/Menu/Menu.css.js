@@ -4,7 +4,7 @@ export const styles = theme => ({
     },
     appbar_root: {
         zIndex: theme.zIndex.drawer + 1,
-        backgroundColor: '#262626',
+        backgroundColor: '#404040',
         height: '50px',
     },
     appbar_typography: {
@@ -25,12 +25,12 @@ export const styles = theme => ({
         backgroundColor: '#DFDFDF',
     },
     list_root: {
-        background: '#262626',
+        background: '#404040',
         borderStyle: 'solid',
         borderWidth: 3,
         margin: '0 0 20 0',
         padding: '0 0 0 0',
-        borderColor: '#262626',
+        borderColor: '#404040',
         height: '100%',
         color: 'white',
         width: '216px',
@@ -38,7 +38,7 @@ export const styles = theme => ({
     listitem_root: {
         margin: 0,
         padding: '20 0 20 0',
-        background: '#262626',
+        background: '#404040',
     },
     listitemtext_root: {
         padding: 0,

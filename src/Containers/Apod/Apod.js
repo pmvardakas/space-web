@@ -19,7 +19,7 @@ class Apod extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("http://192.168.0.4:8082/spring-rest/apod")
+        axios.get("http://192.168.0.4:8082/apod")
             .then(response => {
                 this.setState({
                     apod: response.data

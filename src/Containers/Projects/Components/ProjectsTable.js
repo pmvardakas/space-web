@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from '../Projects.css.js';
 import Table from '@material-ui/core/Table';
-import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
 import ProjectsTableHead from './ProjectsTableHead.js';
 import ProjectsTableBody from './ProjectsTableBody.js';
@@ -13,7 +13,7 @@ import ProjectPanel from './ProjectPanel.js';
 
 const cols = [
     { id: 'id', numeric: false, disablePadding: true, label: 'ID' },
-    { id: 'updated', numeric: false, disablePadding: false, label: 'Last Update (YYYY-MM-DD)' },
+    { id: 'lastUpdated', numeric: false, disablePadding: false, label: 'Last Update (YYYY-MM-DD)' },
 ];
 
 class ProjectsTable extends React.Component {
@@ -23,7 +23,7 @@ class ProjectsTable extends React.Component {
 
         this.state = {
             order: 'asc',
-            orderBy: 'calories',
+            orderBy: 'id',
             selected: 0,
             rows: [],
             page: 0,
@@ -39,7 +39,7 @@ class ProjectsTable extends React.Component {
 
     componentDidMount() {
         if (this.state.rows.length == 0) {
-            axios.get("http://192.168.0.4:8082/spring-rest/projects")
+            axios.get("http://192.168.0.4:8082/projects")
                 .then(response => {
                     this.setState({
                         rows: response.data
@@ -114,15 +114,15 @@ class ProjectsTable extends React.Component {
         let projects = [];
 
         if (rows.projects) {
-            projects = rows.projects.projects;
+            projects = rows.projects;
             emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
         } else {
             emptyRows = rowsPerPage;
         }
 
         return (
-            <div className={classes.content_div_style}>
-                <div className={classes.table_div_style} >
+            <Grid container className={classes.grid_flex_section}>
+                <Grid item className={classes.grid_static_col_scroll} >
                     <Table classes={{ root: classes.table_root }} aria-labelledby="tableTitle">
                         <ProjectsTableHead
                             onRequestSort={this.handleRequestSort}
@@ -145,11 +145,12 @@ class ProjectsTable extends React.Component {
                             handleChangePage={this.handleChangePage}
                             handleChangeRowsPerPage={this.handleChangeRowsPerPage} />
                     </Table>
-                </div>
-
-                <ProjectPanel
-                    id={selected} />
-            </div>
+                </Grid>
+                <Grid item className={classes.grid_flex_col_scroll} >
+                    <ProjectPanel
+                        id={selected} />
+                </Grid>
+            </Grid>
         );
     }
 }

@@ -42,6 +42,35 @@ export const styles = theme => ({
     },
     card_root: {
         width: '100%',
-        margin: '10px 30px 10px 20px',
     },
+    card_content_root: {
+        height: '100%',
+        width: '100%',
+    },
+    grid_flex_section: {
+        flexGrow: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: 0,
+        height: '100%',
+        overflow: 'hidden',
+        padding: '0 0 0 0',
+        backgroundImage: `url("https://api.nasa.gov/images/graphy.png")`,
+        backgroundPosition: 'center',
+        width: '100%',
+    },
+    grid_flex_col_scroll: {
+        flexGrow: 1,
+        overflowY: 'scroll',
+        minHeight: '100%',
+        width: 'calc(95% - 450px)',
+    },
+    grid_static_col_scroll: {
+        flexGrow: 1,
+        overflowY: 'scroll',
+        minHeight: '100%',
+        width: '450px',
+        padding: '0 0 0 0',
+        margin: '10px 0 0 0',
+    }
 });
